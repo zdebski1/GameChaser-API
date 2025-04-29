@@ -4,6 +4,9 @@ import addFormats from "ajv-formats";
 import ajvErrors from "ajv-errors";
 
 import { userRoutes } from "../user/route";
+import { authRoutes } from "../authenticate/route";
+import { preferencesRoutes } from "../preference/route";
+import { verificationRoutes } from "../verification/route";
 
 import cors from "@fastify/cors";
 import fastifyJwt from '@fastify/jwt';
@@ -28,5 +31,8 @@ fastify.register(fastifyJwt, {
 
 
 fastify.register(userRoutes);
+fastify.register(authRoutes);
+fastify.register(preferencesRoutes);
+fastify.register(verificationRoutes);
 
 export default fastify;
