@@ -1,4 +1,4 @@
-import { User } from "../models";
+import User from "../user/model";
 import {
   VerifyDto
 } from "./dto";

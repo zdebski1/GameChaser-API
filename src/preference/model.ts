@@ -1,4 +1,4 @@
-import sequelizeDb from "../config/sequelizeDb";
+import sequelizeDb from "../config/sequelize";
 import { DataTypes, Model } from "sequelize";
 import { IPreferencesModel } from "./interface";
 

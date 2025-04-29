@@ -70,8 +70,8 @@ export async function createEmailVerification (verifyDto: VerifyDto) {
 
     const emailVerificationExpiresAt = addMinutesToDateTime(utcDate, 15);
 
-    const emailSubject = `GameOn Verification Code: ${emailVerificationCode}`;
-    const emailBody = `GameOn verification code: ${emailVerificationCode}`;
+    const emailSubject = `GameChaser Verification Code: ${emailVerificationCode}`;
+    const emailBody = `GameChaser verification code: ${emailVerificationCode}`;
 
     const sendEmailToUserDto = {
       to: existingUser.email,
