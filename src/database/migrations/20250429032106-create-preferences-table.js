@@ -13,6 +13,12 @@ module.exports = {
         userFk: {
           type: Sequelize.INTEGER,
           allowNull: false,
+          references: {
+            model: 'user',
+            key: 'userId',
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'RESTRICT',        
         },
         allowSmsNotifications: {
           type: Sequelize.BOOLEAN,
@@ -34,6 +40,12 @@ module.exports = {
         createdBy: {
           type: Sequelize.INTEGER,
           allowNull: false,
+          references: {
+            model: 'user',
+            key: 'userId',
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'RESTRICT',          
         },
         updatedDateTime: {
           type: Sequelize.DATE,
@@ -42,6 +54,12 @@ module.exports = {
         updatedBy: {
           type: Sequelize.INTEGER,
           allowNull: true,
+          references: {
+            model: 'user',
+            key: 'userId',
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'RESTRICT',          
         },
       }
     );
