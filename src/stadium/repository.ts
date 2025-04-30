@@ -1,33 +1,36 @@
 import Stadium from "./model";
+import fetch from 'node-fetch';
+import cheerio from 'cheerio';
 
 export async function getStadiums() {
   return Stadium.findAll();
 }
 
+export async function getStadiumsFromGoogleSheets() {
+  const url = 'https://docs.google.com/spreadsheets/d/1p0R5qqR7XjoRG2mR5E1D_trlygHSqMOUdMgMpzq0gjU/htmlview';
 
-// import fetch from 'node-fetch';
-
-// const SHEET_ID = '1p0R5qqR7XjoRG2mR5E1D_trlygHSqMOUdMgMpzq0gjU';
-// const SHEET_TAB = '1'; // Default tab is usually '1'
-
-// const url = `https://spreadsheets.google.com/feeds/list/${SHEET_ID}/${SHEET_TAB}/public/values?alt=json`;
-
-// async function fetchSheetData() {
-//   const response = await fetch(url);
-//   const data = await response.json();
-
-//   // Map entries into simple objects
-//   const rows = data.feed.entry.map((entry: any) => {
-//     const result: Record<string, string> = {};
-//     for (const key in entry) {
-//       if (key.startsWith('gsx$')) {
-//         result[key.replace('gsx$', '')] = entry[key].$t;
-//       }
-//     }
-//     return result;
-//   });
-
-//   console.log(rows);
-// }
-
-// fetchSheetData().catch(console.error);
+  async function scrapeSheet() {
+    const res = await fetch(url);
+    const html = await res.text();
+  
+    const $ = cheerio.load(html);
+    const data: any[] = [];
+  
+    $('table.waffle tbody tr').each((i, row) => {
+      const rowData: string[] = [];
+      $(row)
+        .find('td')
+        .each((j, cell) => {
+          rowData.push($(cell).text().trim());
+        });
+      if (rowData.length > 0) {
+        data.push(rowData);
+      }
+    });
+  
+    console.log(data);
+  }
+  
+  scrapeSheet();
+}
+  
