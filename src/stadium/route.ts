@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { GetStadiumsController, GetStadiumsFromGoogleSheetsController } from "./controller";
+import { GetStadiumsController } from "./controller";
 import { authorizeRole } from "../middleware/authorizeRole";
 
 export async function stadiumRoutes(fastify: FastifyInstance) {
@@ -10,12 +10,4 @@ export async function stadiumRoutes(fastify: FastifyInstance) {
   //   }
   // ,
   GetStadiumsController);
-
-  fastify.get(
-    "/stadiums/google",
-  //   { 
-  //     preHandler: authorizeRole(['user','admin'])
-  //   }
-  // ,
-  GetStadiumsFromGoogleSheetsController);
 }

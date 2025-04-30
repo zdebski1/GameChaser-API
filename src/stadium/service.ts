@@ -1,5 +1,5 @@
 import { HttpError } from "../utils/httpError";
-import { getStadiums, getStadiumsFromGoogleSheets } from "./repository";
+import { getStadiums } from "./repository";
 
 export async function GetStadiums() {
   try {
@@ -14,18 +14,6 @@ export async function GetStadiums() {
       stadiumLatitude: stadium.stadiumLatitude,
       stadiumAddress: stadium.stadiumAddress,
     }));
-  } catch (error) {
-    console.error("Error fetching Stadiums", error);
-    throw new HttpError("Error fetching Stadiums", 404);
-  }
-}
-
-export async function GetStadiumsFromGoogleSheets() {
-  try {
-    const stadiums = await getStadiumsFromGoogleSheets();
-
-    return stadiums;
-    
   } catch (error) {
     console.error("Error fetching Stadiums", error);
     throw new HttpError("Error fetching Stadiums", 404);
