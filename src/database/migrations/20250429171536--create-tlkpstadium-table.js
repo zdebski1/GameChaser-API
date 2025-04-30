@@ -23,13 +23,17 @@ module.exports = {
         allowNull: false,
       },           
       stadiumLongitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       stadiumLatitude: {
         type: Sequelize.STRING,
         allowNull: true,
-      },           
+      },
+      stadiumAddress: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },                 
       createdDate: {
         type: Sequelize.DATE,
         allowNull: false,
