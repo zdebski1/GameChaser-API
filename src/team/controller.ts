@@ -18,7 +18,7 @@ export async function GetTeamsController(
       
       return reply.code(200).send(teams);      
     } catch (error) {
-      console.error("Error creating user: ", error);
+      console.error("Error getting Teams: ", error);
       await errorMessage(error, listOfErrorCodes, reply);
     }
   }

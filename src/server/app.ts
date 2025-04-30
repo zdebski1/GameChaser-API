@@ -8,6 +8,7 @@ import { authRoutes } from "../authenticate/route";
 import { preferencesRoutes } from "../preference/route";
 import { verificationRoutes } from "../verification/route";
 import { teamRoutes } from "../team/route";
+import { leagueRoutes } from "../league/route";
 
 import cors from "@fastify/cors";
 import fastifyJwt from '@fastify/jwt';
@@ -36,5 +37,6 @@ fastify.register(authRoutes);
 fastify.register(preferencesRoutes);
 fastify.register(verificationRoutes);
 fastify.register(teamRoutes);
+fastify.register(leagueRoutes);
 
 export default fastify;
